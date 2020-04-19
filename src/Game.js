@@ -1,4 +1,4 @@
-import CANNON from 'cannon';
+// import CANNON from 'cannon';
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
 import * as GUI from 'babylonjs-gui';
@@ -25,7 +25,7 @@ export default class Game {
     var light0 = new BABYLON.DirectionalLight("Omni", new BABYLON.Vector3(-2, -5, 2), this.scene);
     //Create a basic light, aiming 0,1,0 - meaning, to the sky.
     this.light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), this.scene);
-    this.scene.gravity = new BABYLON.Vector3(0,-0.98,0)
+    this.scene.gravity = new BABYLON.Vector3(0,-9.8,0)
 
 
     BABYLON.SceneLoader.ImportMesh(null, "/public/models/","world.obj", this.scene, (newMeshes, particleSystems, skeletons) => {
@@ -44,6 +44,7 @@ export default class Game {
     camera.rotationOffset = 0;
     camera.maxCameraSpeed = 10
     camera.attachControl(this.canvas, true);
+    camera.position = new BABYLON.Vector3(0,10,0);
 
     this.player.render(this.scene).then((mesh) => {
       console.log('player added')
@@ -52,7 +53,7 @@ export default class Game {
       this.loaded = true
     })
     this.scene.collisionsEnabled = true;
-    let music = new BABYLON.Sound("Music", "/public/sounds/nature_theme1.mp3", this.scene, null, { loop: true, autoplay: true });
+    // let music = new BABYLON.Sound("Music", "/public/sounds/nature_theme1.mp3", this.scene, null, { loop: true, autoplay: true });
 
   }
 

@@ -59,10 +59,10 @@ export default class Player {
         Utils.getAnimationByName('walk_back', this.animationGroups).stop()
       }
       if (this.controls["68"]) {
-        this.mesh.rotate(BABYLON.Axis.Y,0.01, BABYLON.Space.WORLD);
+        this.mesh.rotate(BABYLON.Axis.Y,0.05, BABYLON.Space.WORLD);
       }
       if (this.controls["65"]) {
-        this.mesh.rotate(BABYLON.Axis.Y,-0.01, BABYLON.Space.WORLD)
+        this.mesh.rotate(BABYLON.Axis.Y,-0.05, BABYLON.Space.WORLD)
       }
 
       Utils.getAnimationByName('air', this.animationGroups).play(true)
@@ -70,7 +70,7 @@ export default class Player {
       if (!this.controls.inAir) {
         if (this.controls["32"]) {
           console.log('should jump...')
-          this.velocity.y = 35 * delta
+          this.velocity.y = 100 * delta
           this.controls.inAir = true
         }
       }
